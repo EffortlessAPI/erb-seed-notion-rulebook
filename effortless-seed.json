@@ -27,7 +27,8 @@
       "secret": true,
       "valueType": "secret",
       "persist": false,
-      "required": true
+      "required": true,
+      "default": ""
     },
     {
       "key": "notionDatabaseIds",
