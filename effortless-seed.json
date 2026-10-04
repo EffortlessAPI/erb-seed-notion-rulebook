@@ -1,0 +1,43 @@
+{
+  "seed": {
+    "id": "notion-rulebook",
+    "displayName": "From Notion",
+    "tagline": "Turn the Notion databases a team runs on into a rulebook you own.",
+    "description": "Extracts Notion databases -- properties, relations, rollups, formulas and pages -- into a rulebook, then derives everything from it: the Postgres schema, documentation, RuleSpeak, the explainer DAG, an Excel workbook and the browser rulebook editor. Re-pull it with effortless build -id and the rulebook follows the workspace.",
+    "kind": "root",
+    "category": "root",
+    "stack": "Notion, Rulebook, Postgres, Markdown, Excel",
+    "requiresInput": "Notion databases shared with an integration, and its token",
+    "mountPath": null,
+    "requires": null,
+    "sortOrder": 128
+  },
+  "subSeeds": [],
+  "replacements": [
+    {
+      "key": "projectName",
+      "label": "What should we call it?",
+      "description": "Short lower-case project name (becomes the repository and database name)",
+      "default": "my-notion-rulebook"
+    },
+    {
+      "key": "notionToken",
+      "label": "Notion integration token",
+      "description": "An internal integration token; share the databases you want with that integration. Used once for the extraction and not stored.",
+      "secret": true,
+      "valueType": "secret",
+      "persist": false,
+      "required": true
+    },
+    {
+      "key": "notionDatabaseIds",
+      "label": "Which databases?",
+      "description": "Blank means every database shared with the integration.",
+      "valueType": "choice_multi",
+      "discover": "notion_databases",
+      "dependsOn": "notionToken",
+      "required": false,
+      "default": ""
+    }
+  ]
+}
